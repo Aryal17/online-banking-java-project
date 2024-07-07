@@ -48,5 +48,37 @@ public class AccountServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+        String accountNumber = request.getParameter("accountNumber");
+        String owner = request.getParameter("owner");
+        String  balance = request.getParameter("balance");
+        PrintWriter out = response.getWriter();
+        Connection connection = null;
+        try{
+            connection = DatabaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts(accountNumber,owner,balance) VALUES(?,?,?)");
+            statement.setString(1, accountNumber);
+            statement.setString(2, owner);
+            statement.setDouble(3, Double.valueOf(balance));
+
+            int insertData = statement.executeUpdate();
+            if (insertData == 1) {
+                out.println("account_created_successfully");
+            } else {
+                out.println("error_while_creating_account");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+//            out.println(e.getMessage());
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+//            out.println(e.getMessage());
+
+        }finally {
+            DatabaseConnection.closeConnection(connection);
+        }
+
     }
 }

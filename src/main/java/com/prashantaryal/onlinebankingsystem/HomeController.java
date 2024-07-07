@@ -1,12 +1,12 @@
 package com.prashantaryal.onlinebankingsystem;
 import com.prashantaryal.onlinebankingsystem.classes.Account;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +26,18 @@ public class HomeController {
 
     @FXML
     private TableColumn<Account, Double> balanceColumn;
+
+    @FXML
+    private TextField owner;
+
+    @FXML
+    private TextField accountNumber;
+
+    @FXML
+    private TextField balance;
+
+    @FXML
+    private Label responseLabel;
 
     public void initialize() {
         // Configure the cell value factories for each column
@@ -47,6 +59,7 @@ public class HomeController {
 
     private List<Account> fetchAccountsFromDatabase() {
         // Replace this with your actual database retrieval logic
+
         List<Account> accounts = new ArrayList<>();
         try{
             String response = APIController.getData("http://localhost:8080/onlinebankingsystem/api/accounts","GET");
@@ -63,5 +76,40 @@ public class HomeController {
 
 
         return accounts;
+    }
+    private void refreshTable(){
+        accountTable.getItems().clear();
+        List<Account> accounts = fetchAccountsFromDatabase();
+        accountTable.getItems().addAll(accounts);
+    }
+    @FXML
+    private void createAccount() throws IOException{
+
+        String accountNumber = this.accountNumber.getText();
+        String owner = this.owner.getText();
+        String balance = this.balance.getText();
+        try{
+            String postData = "accountNumber=" + accountNumber+ "&owner="+owner + "&balance="+ balance;
+
+            String response = APIController.sendPost("http://localhost:8080/onlinebankingsystem/api/accounts",postData);
+            if(response.equals("account_created_successfully")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Create Acount");
+                alert.setHeaderText(null);
+                alert.setContentText("Account Created successfully");
+                alert.showAndWait();
+                this.accountNumber.clear();
+                this.owner.clear();
+                this.balance.clear();
+                refreshTable();
+            }else{
+                responseLabel.setText(response);
+                responseLabel.setStyle("-fx-text-fill: red");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            responseLabel.setText("Error while adding product");
+        }
+
     }
 }
