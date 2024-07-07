@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="onlinebankingsystem">
+    <output-path>$PROJECT_DIR$/out/artifacts/onlinebankingsystem</output-path>
+    <root id="archive" name="onlinebankingsystem.war">
+      <element id="javaee-facet-resources" facet="onlinebankingsystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="onlinebankingsystem" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
