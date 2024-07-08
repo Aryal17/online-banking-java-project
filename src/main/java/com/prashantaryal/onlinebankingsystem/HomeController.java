@@ -113,4 +113,9 @@ public class HomeController {
         }
 
     }
+
+    @FXML
+    private void goToTransfer() throws IOException{
+        App.setRoot("transfer_funds");
+    }
 }

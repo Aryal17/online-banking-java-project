@@ -6,13 +6,24 @@
 <?import javafx.collections.FXCollections?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.prashantaryal.onlinebankingsystem.TransferFundsController">
-    <children>
-        <TextField fx:id="senderAccount" promptText="Sender Account" />
-        <TextField fx:id="receiverAccount" promptText="Receiver Account" />
+    <HBox alignment="CENTER" spacing="10">
+        <Button text="Home" onAction="#goToHome"/>
+    </HBox>
+    <VBox spacing="10" style="-fx-padding: 20px;">
+        <Label text="From Account"/>
+        <ComboBox fx:id="accountFrom"/>
+        <Label text="To Account"/>
+        <ComboBox fx:id="accountTo"/>
         <TextField fx:id="amount" promptText="Amount" />
         <Button text="Transfer Funds" onAction="#transferFunds" />
         <Label fx:id="responseLabel" />
-    </children>
-
-
+    </VBox>
+    <TableView fx:id="transactionsTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="transactionIdColumn" text="Transaction ID"/>
+            <TableColumn fx:id="fromAccountColumn" text="From Account"/>
+            <TableColumn fx:id="toAccountColumn" text="To Account"/>
+            <TableColumn fx:id="amountColumn" text="Amount"/>
+        </columns>
+    </TableView>
 </VBox>

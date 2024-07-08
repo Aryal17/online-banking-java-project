@@ -10,9 +10,12 @@
 
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.prashantaryal.onlinebankingsystem.HomeController">
-
+  <HBox alignment="CENTER" spacing="10">
+    <Button text="Transfer Funds" onAction="#goToTransfer"/>
+  </HBox>
   <GridPane  style="-fx-padding: 8px">
     <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0" hgap="10" vgap="10"  prefWidth="600">
       <VBox spacing="20" alignment="CENTER">

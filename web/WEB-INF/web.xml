@@ -12,5 +12,13 @@
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/api/accounts</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>TransferServlet</servlet-name>
+        <servlet-class>com.prashantaryal.onlinebankingsystem.servlets.TransferServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransferServlet</servlet-name>
+        <url-pattern>/api/transfer</url-pattern>
+    </servlet-mapping>
 
 </web-app>
