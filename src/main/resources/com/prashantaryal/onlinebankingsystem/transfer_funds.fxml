@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.prashantaryal.onlinebankingsystem.TransferFundsController">
+    <children>
+        <TextField fx:id="senderAccount" promptText="Sender Account" />
+        <TextField fx:id="receiverAccount" promptText="Receiver Account" />
+        <TextField fx:id="amount" promptText="Amount" />
+        <Button text="Transfer Funds" onAction="#transferFunds" />
+        <Label fx:id="responseLabel" />
+    </children>
+
+
+</VBox>

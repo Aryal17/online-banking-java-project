@@ -20,7 +20,7 @@
 
         <TableView fx:id="accountTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="600.0">
 
-        <columns>
+          <columns>
             <TableColumn text="ID" fx:id="idColumn" prefWidth="50.0"/>
             <TableColumn text="Account Number" fx:id="accountNumberColumn" prefWidth="150.0"/>
             <TableColumn text="Owner" fx:id="ownerColumn" prefWidth="200.0"/>
